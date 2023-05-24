@@ -20,7 +20,6 @@ export default function RootLayout({
     <html lang="en">
       <Head />
       <body className={inter.className}>
-        {/* <SessionProvider session={session}> */}
         <Provider>
           <header className="w-full bg-orange-700 h-20">
             <nav className="max-w-6xl mx-auto h-full">
@@ -28,13 +27,11 @@ export default function RootLayout({
                 <li>Home</li>
                 <li>About</li>
                 <li>Contact</li>
-                {/* <li onClick={() => signIn()}>Sign-in</li> */}
                 <SignInButton />
               </ul>
             </nav>
           </header>
           {children}
-          {/* </SessionProvider> */}
         </Provider>
       </body>
     </html>

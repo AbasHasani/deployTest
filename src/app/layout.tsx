@@ -4,7 +4,7 @@ import Head from "./head";
 import SignInButton from "./signInBtn";
 // import { SessionProvider } from "next-auth/react";
 import Provider from "@/copms/provider";
-const inter = Montserrat({ subsets: ["latin"], weight: ["400"] });
+// const inter = Montserrat({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head />
-      <body className={inter.className}>
+      <body>
         <Provider>
           <header className="w-full bg-orange-700 h-20">
             <nav className="max-w-6xl mx-auto h-full">

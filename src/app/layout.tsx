@@ -1,7 +1,9 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
 import Head from "./head";
-
+import SignInButton from "./signInBtn";
+// import { SessionProvider } from "next-auth/react";
+import Provider from "@/copms/provider";
 const inter = Montserrat({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
@@ -18,8 +20,22 @@ export default function RootLayout({
     <html lang="en">
       <Head />
       <body className={inter.className}>
-        <header className="w-full bg-orange-700 h-20"></header>
-        {children}
+        {/* <SessionProvider session={session}> */}
+        <Provider>
+          <header className="w-full bg-orange-700 h-20">
+            <nav className="max-w-6xl mx-auto h-full">
+              <ul className="w-full flex justify-around h-full items-center">
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+                {/* <li onClick={() => signIn()}>Sign-in</li> */}
+                <SignInButton />
+              </ul>
+            </nav>
+          </header>
+          {children}
+          {/* </SessionProvider> */}
+        </Provider>
       </body>
     </html>
   );

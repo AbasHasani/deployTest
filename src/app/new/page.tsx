@@ -10,7 +10,7 @@ async function createUser(data: FormData) {
   if (!name || typeof name != "string") return;
   console.log("name: " + name);
   await prisma.user.create({ data: { name } });
-  redirect("/");
+  redirect("/users");
 }
 
 const Page = () => {

@@ -9,13 +9,20 @@ const deleteUser = async (id: string) => {
 };
 
 export default async function Home() {
-
   return (
     <div className="">
       <h1>Hello next 13</h1>
-      <Link className="p-1 rounded bg-green-900 text-green-100" href="/new">
-        New
-      </Link>
+      <header className="flex justify-between items-center">
+        <Link
+          className="p-1 mb-2 rounded bg-green-900 text-green-100"
+          href="/new"
+        >
+          New
+        </Link>
+        <Link className="p-1 rounded bg-cyan-800 text-cyan-100" href="/users">
+          Users
+        </Link>
+      </header>
     </div>
   );
 }

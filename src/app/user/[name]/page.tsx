@@ -6,7 +6,7 @@ import Link from "next/link";
 import Post from "./post";
 import Form from "./form";
 
-export const createPost = async (id: string, title: string) => {
+const createPost = async (id: string, title: string) => {
   "use server";
   await prisma.post.create({data: {authorId: id}})
 };

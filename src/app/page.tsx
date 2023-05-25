@@ -1,20 +1,25 @@
+import { prisma } from "@/db";
 import Image from "next/image";
 import Link from "next/link";
-import Movie from "./Movie";
+import User from "./user";
+
+const deleteUser = async (id: string) => {
+  "use server";
+  await prisma.user.delete({where: {id}})
+};
+
 export default async function Home() {
-  const res =
-    await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.TMDB_KEY}
-  `);
-  const data = await res.json();
+  const users = await prisma.user.findMany();
+
   return (
-    <main className="max-w-6xl overflow-hidden mx-auto">
+    <div className="">
       <h1>Hello next 13</h1>
-      <div className="grid gap-16 grid-cols-fluid">
-        {data.results.map((movie: any) => (
-          <Movie key={movie.id} {...movie} />
-        ))}
-      </div>
-      <Link href="/about">About</Link>
-    </main>
+      <Link className="p-1 rounded bg-green-900 text-green-100" href="/new">
+        New
+      </Link>
+      {users.map((user) => (
+        <User {...user} key={user.id} deleteUser={deleteUser} />
+      ))}
+    </div>
   );
 }

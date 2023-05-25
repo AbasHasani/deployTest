@@ -1,8 +1,8 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const authOptions = {
+const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     CredentialsProvider({
@@ -24,15 +24,9 @@ const authOptions = {
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
 
+        const user = { name: credentials?.username, id: "id", email: "email" };
 
-        // const res = await fetch("/your/endpoint", {
-        //   method: "POST",
-        //   body: JSON.stringify(credentials),
-        //   headers: { "Content-Type": "application/json" },
-        // });
-        // const user = await res.json();
         // If no error and we have user data, return it
-        const user = {name: credentials?.username, email: "email", id: "id"}
         if (true) {
           return user;
         }
@@ -42,5 +36,6 @@ const authOptions = {
     }),
   ],
 };
-const handler = NextAuth(authOptions)
-export { handler as GET, handler as POST };
+
+const handeler = NextAuth(authOptions);
+export { handeler as GET, handeler as POST };

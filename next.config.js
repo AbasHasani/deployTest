@@ -5,7 +5,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ["image.tmdb.org", "lh3.googleusercontent.com"],
+    domains: ["image.tmdb.org", "lh3.googleusercontent.com","avatars.githubusercontent.com"],
   },
 };
 

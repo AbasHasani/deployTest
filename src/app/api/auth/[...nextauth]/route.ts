@@ -7,6 +7,9 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -22,23 +25,15 @@ export const authOptions: NextAuthOptions = {
         port: process.env.EMAIL_SERVER_PORT,
         auth: {
           user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD
-        }
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
       },
-      from: process.env.EMAIL_FROM
+      from: process.env.EMAIL_FROM,
     }),
   ],
-  callbacks: {
-    // signIn: ({profile, account }) => {
-    //   console.log("ROLE: ")
-    //   console.log(profile?.role)
-    //   // console.log(account)
-    //   return true
-    // }
-  },
-  pages :{
-    signIn: "/signin"
-  }
+  // pages :{
+  //   signIn: "/signin"
+  // }
 };
 
 const handeler = NextAuth(authOptions);

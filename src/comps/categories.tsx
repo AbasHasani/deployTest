@@ -4,7 +4,7 @@ const Categories = () => {
   return (
     <div>
       <h1 className="mb-5 font-bold text-lg text-light-blue">دسته بندی ها</h1>
-      <div className="flex gap-2 px-6 py-3  overflow-auto">
+      <div className="flex gap-2 px-6 py-3 overflow-auto">
         {Array(6)
           .fill(null)
           .map((_, i) => (

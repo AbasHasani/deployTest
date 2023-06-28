@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model OfferedLoan {
+model Loan {
   id         String   @id @default(uuid())
   min        Int
   max        Int
@@ -16,9 +16,9 @@ model OfferedLoan {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  Product    Product @relation(fields: [productId], references: [id], map: "OfferedLoans_ibfk_1")
+  Product    Product  @relation(fields: [productId], references: [id], map: "OfferedLoans_ibfk_1")
   productId  String
-  Provider   User    @relation(fields: [providerId], references: [id], map: "OfferedLoans_ibfk_2")
+  Provider   Provider @relation("offeredLoans", fields: [providerId], references: [id], map: "OfferedLoans_ibfk_2")
   providerId String
 
   @@index([productId])
@@ -34,14 +34,16 @@ model TakenLoan {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  Provider   User    @relation("Provider_takenLoans", fields: [providerId], references: [id], map: "TakenLoans_ibfk_3")
-  providerId String
-  Taker      User    @relation("Teker_takenLoans", fields: [takerId], references: [id], map: "TakenLoans_ibfk_1")
+  // Provider   User    @relation("Provider_takenLoans", fields: [providerId], references: [id], map: "TakenLoans_ibfk_3")
+  // providerId String
+  Taker      User      @relation("takenLoans", fields: [takerId], references: [id], map: "TakenLoans_ibfk_1")
   takerId    String
-  Product    Product @relation(fields: [productId], references: [id], map: "TakenLoans_ibfk_2")
+  Product    Product   @relation(fields: [productId], references: [id], map: "TakenLoans_ibfk_2")
   productId  String
+  Provider   Provider? @relation("givenLoans", fields: [providerId], references: [id])
+  providerId String?
 
-  @@index([providerId])
+  // @@index([providerId])
   @@index([productId])
   @@index([takerId])
 }
@@ -57,28 +59,47 @@ model Product {
   max         Int?     @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  price       Int
 
-  OfferedLoans OfferedLoan[]
-  TakenLoans   TakenLoan[]
-  provider     User          @relation(fields: [providerId], references: [id], map: "Products_ibfk_1")
-  providerId   String
+  Loan       Loan[]
+  TakenLoans TakenLoan[]
+  Provider   Provider    @relation(fields: [providerId], references: [id])
+  providerId String
 
   @@index([providerId])
 }
 
-// model User {
-//   id           String        @id @default(uuid())
-//   username     String        @db.VarChar(255)
-//   email        String        @unique(map: "email") @db.VarChar(255)
-//   number       String?       @unique(map: "number") @default("")
-//   isManager    Boolean       @default(false)
-//   createdAt    DateTime      @default(now())
-//   updatedAt    DateTime      @updatedAt
-//   OfferedLoans OfferedLoan[]
-//   Providers    TakenLoan[]   @relation("Teker_takenLoans")
-//   Takers       TakenLoan[]   @relation("Provider_takenLoans")
-//   Products     Product[]
-// }
+// User stuff
+
+model Provider {
+  id         String      @id @default(cuid())
+  name       String?
+  image      String?
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Loans      Loan[]      @relation("offeredLoans")
+  LoansGiven TakenLoan[] @relation("givenLoans")
+  Products   Product[]
+  User       User        @relation(fields: [userId], references: [id])
+  userId     String      @unique
+}
+
+model User {
+  id            String      @id @default(cuid())
+  name          String?
+  email         String      @unique
+  emailVerified DateTime?
+  number        String?     @unique(map: "number")
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  Loans         TakenLoan[] @relation("takenLoans")
+  Provider      Provider?
+}
+
+// The prisma provider with next auth - don't modify
 
 model Account {
   id                       String  @id @default(cuid())
@@ -105,24 +126,6 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model User {
-  id            String        @id @default(cuid())
-  name          String?
-  email         String        @unique
-  emailVerified DateTime?
-  number        String?       @unique(map: "number")
-  image         String?
-  isManager     Boolean       @default(false)
-  accounts      Account[]
-  sessions      Session[]
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  OfferedLoans  OfferedLoan[]
-  Providers     TakenLoan[]   @relation("Teker_takenLoans")
-  Takers        TakenLoan[]   @relation("Provider_takenLoans")
-  Products      Product[]
 }
 
 model VerificationToken {

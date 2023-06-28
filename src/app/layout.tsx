@@ -1,9 +1,8 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
-import Head from "./head";
 import SignInButton from "./signInBtn";
 import Provider from "@/comps/provider";
-import Header from "@/comps/header";
+import Header from "@/app/header";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { Session } from "next-auth";
@@ -19,12 +18,12 @@ export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+  testy: React.ReactNode;
 }) {
-  const session: Session | null = await getServerSession(authOptions)
+  const session: Session | null = await getServerSession(authOptions);
   return (
     <html lang="en">
-      {/* <Head /> */}
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} overflow-x-hidden`}>
         <Provider>
           <Header session={session} />
           <main className="container mx-auto">{children}</main>

@@ -1,35 +1,87 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/comps/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
   theme: {
+    container: {
+      center: true,
+      // padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-        "gradient-header-d":
-          "linear-gradient(100deg, #CCE3EBff, #B0C7D2ff, #93AAB8ff, #778E9Fff, #5A7286ff, #3E556Cff, #213953ff)",
-      },
-      gridTemplateColumns: {
-        fluid: "repeat(auto-fit, minmax(15rem, 1fr))",
-      },
-      fontFamily: {
-        searchBarTitle: ["Lora", "sens serif"],
-      },
       colors: {
-        "light-blue": "#CCE3EB",
-        "dark-blue": "#213953",
-        "form-blue": "#13054851",
+        border: "hsl(var(--border))",
+        input: "rgb(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "rgb(var(--background))",
+        foreground: "rgb(var(--foreground))",
+        primary: {
+          DEFAULT: "rgb(var(--primary))",
+          foreground: "rgb(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "rgb(var(--secondary))",
+          foreground: "rgb(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "rgb(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        saccent: {
+          DEFAULT: "rgb(var(--s-accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        taccent: {
+          DEFAULT: "rgb(var(--t-accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        "form-blue": "rgb(var(--form-blue))",
+        "light-blue": "rgb(var(--light-blue))",
+        "dark-blue": "rgb(var(--dark-blue))"
       },
-      height: {
-        menuItemHeight: "calc(100% - 1px)",
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate")],
+}

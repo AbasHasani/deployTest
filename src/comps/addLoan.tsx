@@ -1,5 +1,5 @@
 "use client";
-import { CreateLoanArgs } from "@/app/user/[name]/page";
+// import { CreateLoanArgs } from "@/app/user/[name]/page";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { FC, useState } from "react";
@@ -10,7 +10,7 @@ interface Props {
   productMinMax: {min: number, max: number},
   loans: number,
   productPrepayment: number,
-  createLoan: (args: CreateLoanArgs) => void,
+  createLoan: (args: any) => void,
 }
 
 const AddLoan: FC<Props> = ({

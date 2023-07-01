@@ -14,7 +14,7 @@ const Categories = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-fluid">
+    <div className="grid grid-cols-3">
       {categories.map(({ title, items }) => (
         <div key={title}>
           <h1 className="font-bold text-lg">{title}</h1>

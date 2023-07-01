@@ -1,13 +1,12 @@
 import "./globals.css";
 import { Montserrat } from "next/font/google";
-import SignInButton from "./signInBtn";
 import Provider from "@/comps/provider";
 import Header from "@/app/header";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { Session } from "next-auth";
 import { isNullishCoalesce } from "typescript";
-const inter = Montserrat({ subsets: ["latin"], weight: ["400"] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -23,7 +22,7 @@ export default async function RootLayout({
   const session: Session | null = await getServerSession(authOptions);
   return (
     <html lang="en">
-      <body className={`${inter.className} overflow-x-hidden`}>
+      <body className={`${montserrat.className} overflow-x-hidden`}>
         <Provider>
           <Header session={session} />
           <main className="container mx-auto">{children}</main>

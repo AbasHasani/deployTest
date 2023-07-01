@@ -16,10 +16,10 @@ const Categories = () => {
   return (
     <div className="grid grid-cols-fluid">
       {categories.map(({ title, items }) => (
-        <div>
+        <div key={title}>
           <h1 className="font-bold text-lg">{title}</h1>
           {items.map((item) => (
-            <p>{item}</p>
+            <p key={item}>{item}</p>
           ))}
         </div>
       ))}

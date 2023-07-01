@@ -4,12 +4,12 @@ import { FC } from "react";
 import { Button } from "@/app/components/ui/button";
 import Link from "next/link";
 
-const UserHeader: FC<User & { hasProvider: boolean }> = ({
-  name,
-  email,
-  image,
-  hasProvider,
-}) => {
+const UserHeader: FC<{
+  name: string | undefined | null;
+  email: string | undefined | null;
+  image: string | undefined | null;
+  hasProvider: boolean;
+}> = ({ name, email, image, hasProvider }) => {
   return (
     <div className="w-screen fullScreenMarginLeft bg-secondary text-secondary-foreground">
       <div className="container flex gap-5 py-10 items-center">

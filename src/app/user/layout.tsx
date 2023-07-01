@@ -5,14 +5,15 @@ import { prisma } from "@/db";
 
 const UserLayout = async ({ children }: { children: React.ReactNode }) => {
   const session = await getServerSession(authOptions);
-  const user = await prisma.user.findUnique({
-    where: {
-      email: session?.user?.email || "none",
-    },
-  });
+  // const user = await prisma.user.findUnique({
+  //   where: {
+  //     email: session?.user?.email || "none",
+  //   },
+  // });
   return (
     <div>
-      <UserHeader {...user} hasProvider={false} />
+      {/* @ts-ignore */}
+      <UserHeader {...session?.user} hasProvider={false} />
       {children}
     </div>
   );

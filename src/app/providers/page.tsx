@@ -14,7 +14,7 @@ const Page = () => {
       <div className="flex-1">
         <div className="flex justify-around border border-info/20 p-3 rounded">
           {options.map((option) => (
-            <p>{option}</p>
+            <p key={option}>{option}</p>
           ))}
         </div>
         <div>
@@ -24,6 +24,7 @@ const Page = () => {
               <Provider
                 name={"Provider number " + i}
                 image={`/p${i + 1}.jpg`}
+                key={i}
               />
             ))}
         </div>

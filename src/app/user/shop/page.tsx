@@ -2,6 +2,7 @@ import { prisma } from "@/db";
 import { getUser } from "../session";
 import { ShopForm as Form } from "./form";
 import Header from "./header";
+import { products } from "@/app/products/page";
 
 const createProduct = async (
   description: string,
@@ -13,30 +14,31 @@ const createProduct = async (
   providerId: string
 ) => {
   "use server";
-  await prisma.product.create({
-    data: {
-      description,
-      name,
-      price,
-      max,
-      min,
-      prepayment,
-      providerId,
-    },
-  });
+  // await prisma.product.create({
+  //   data: {
+  //     description,
+  //     name,
+  //     price,
+  //     max,
+  //     min,
+  //     prepayment,
+  //     providerId,
+  //   },
+  // });
+  console.log("Hi")
 };
 
 const Page = async () => {
   const { id: userId, name } = await getUser();
-  const shop = await prisma.provider.findUnique({ where: { userId } });
-  const products = await prisma.product.findMany({
-    where: { providerId: shop?.id },
-  });
+  // const shop = await prisma.provider.findUnique({ where: { userId } });
+  // const products = await prisma.product.findMany({
+  //   where: { providerId: shop?.id },
+  // });
   return (
     <div>
       <Header />
       <div className="max-w-[40rem] mx-auto">
-        <Form createProduct={createProduct} providerId={shop?.id || ""} />
+        <Form createProduct={createProduct} providerId={"123"} />
       </div>
       <div className="mt-5">
         {products.map((product) => (

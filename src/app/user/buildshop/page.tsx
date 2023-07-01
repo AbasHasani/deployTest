@@ -6,9 +6,10 @@ import { prisma } from "@/db";
 const createShop = async (name: string) => {
   "use server";
   const session = await getServerSession(authOptions)
-  const user = await prisma.user.findUnique({where: {email: session?.user?.email || "none"}});
-  if(!user) return;
-  await prisma.provider.create({data: {name, userId: user?.id}})
+  // const user = await prisma.user.findUnique({where: {email: session?.user?.email || "none"}});
+  // if(!user) return;
+  // await prisma.provider.create({data: {name, userId: user?.id}})
+  console.log("Hello "+session?.user?.name)
 }
 
 const Page = async () => {

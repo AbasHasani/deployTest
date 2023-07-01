@@ -62,7 +62,7 @@ const Sidebar = () => {
         />
         <div className="grid grid-cols-2 gap-3">
           {providers.map(({ text, id }) => (
-            <div className="flex gap-2">
+            <div className="flex gap-2" key={id}>
               <label htmlFor="online">{text}</label>
               <input type="checkbox" name={id} id={id} />
             </div>

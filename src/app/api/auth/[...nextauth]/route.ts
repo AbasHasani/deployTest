@@ -6,7 +6,7 @@ import { prisma } from "@/db";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  // adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },

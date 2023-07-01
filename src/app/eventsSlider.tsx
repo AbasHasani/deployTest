@@ -41,7 +41,7 @@ const Events = () => {
           className="flex scroll-smooth overflow-auto"
         >
           {imgPaths.map((path) => (
-            <div className="relative min-w-full h-[35rem]">
+            <div className="relative min-w-full h-[35rem]" key={path}>
               <Image
                 quality={100}
                 unoptimized={true}

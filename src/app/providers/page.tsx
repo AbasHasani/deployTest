@@ -9,7 +9,7 @@ const Page = () => {
     "پیشنهاد وام گیرندگان",
   ];
   return (
-    <div className="flex gap-2 items-start">
+    <div className="flex gap-2 items-start mt-5">
       <SideBar />
       <div className="flex-1">
         <div className="flex justify-around border border-info/20 p-3 rounded">

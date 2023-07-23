@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Categories = () => {
   const categories = [
     {
@@ -14,12 +16,14 @@ const Categories = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-3">
+    <div className="grid grid-cols-3 mt-5">
       {categories.map(({ title, items }) => (
         <div key={title}>
           <h1 className="font-bold text-lg">{title}</h1>
           {items.map((item) => (
-            <p key={item}>{item}</p>
+            <p>
+            <Link href={`/products?category=${item}`} key={item}>{item}</Link>
+            </p>
           ))}
         </div>
       ))}

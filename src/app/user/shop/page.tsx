@@ -29,7 +29,7 @@ const createProduct = async (
 };
 
 const Page = async () => {
-  const { id: userId, name } = await getUser();
+  // const { id: userId, name } = await getUser();
   // const shop = await prisma.provider.findUnique({ where: { userId } });
   // const products = await prisma.product.findMany({
   //   where: { providerId: shop?.id },

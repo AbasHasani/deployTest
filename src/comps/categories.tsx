@@ -9,7 +9,7 @@ const Categories = () => {
       <h1 className="my-5 font-bold text-lg text-secondary">دسته بندی ها</h1>
       <div className="flex gap-2 px-6 py-3 overflow-auto">
         {categories.map((category, i) => (
-          <Link className="flex-1" href={`/products?category=${category}`}>
+          <Link className="flex-1" href={`/products?category=${category}`} key={i}>
           <div
             className="flex-1 bg-cover bg-right relative bg-white transition-all flex flex-col justify-between rounded-xl overflow-hidden cursor-pointer hover:-mt-3"
             style={{
@@ -22,7 +22,6 @@ const Categories = () => {
               backgroundSize: "cover",
               backgroundPosition: "center top ",
             }}
-            key={i}
           >
             <p className="text-black text-center p-3 text-lg font-bold">
               {category}

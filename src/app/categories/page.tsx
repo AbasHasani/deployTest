@@ -21,8 +21,8 @@ const Categories = () => {
         <div key={title}>
           <h1 className="font-bold text-lg">{title}</h1>
           {items.map((item) => (
-            <p>
-            <Link href={`/products?category=${item}`} key={item}>{item}</Link>
+            <p key={item}>
+            <Link href={`/products?category=${item}`} >{item}</Link>
             </p>
           ))}
         </div>

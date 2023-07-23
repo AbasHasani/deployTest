@@ -33,7 +33,7 @@ const Header: FC<Props> = ({ session }) => {
             <Link href="/learning">آموزش</Link>
           </li>
           <li className="hover:bg-white/20 p-1 rounded-lg transition-all cursor-pointer">
-            <Link href="/">درباره ما</Link>
+            <Link href="/aboutus">درباره ما</Link>
           </li>
           <li>
             {session?.user ? (

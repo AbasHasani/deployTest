@@ -5,13 +5,14 @@ import React, { FC, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import SignedIn from "./signedIn";
 import { Session } from "next-auth";
-
+import { usePathname } from "next/navigation";
 interface Props {
   session: Session | null;
 }
 
 const Header: FC<Props> = ({ session }) => {
   const [openMenu, setOpenMenu] = useState(false);
+  const pathname = usePathname().replace("/","");
   return (
     <header className="w-full h-20 z-50">
       <nav className="lg:w-3/5 lg:mx-auto mx-5 flex justify-between items-center h-full">
@@ -23,23 +24,23 @@ const Header: FC<Props> = ({ session }) => {
             openMenu ? "right-0 w-screen" : "-right-full"
           }`}
         >
-          <li className="hover:bg-white/20 p-1 rounded-lg transition-all cursor-pointer">
+          <li className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("categories") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>
             <Link href="/categories"> دسته بندی کالاها</Link>
           </li>
-          <li className="hover:bg-secondary hover:text-primary p-1 border border-black bg-primary rounded-lg transition-all cursor-pointer">
+          <li className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("providers") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>
             <Link href="/providers">وام دهندگان</Link>
           </li>
-          <li className="hover:bg-white/20 p-1 rounded-lg transition-all cursor-pointer">
+          <li className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("learning") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>
             <Link href="/learning">آموزش</Link>
           </li>
-          <li className="hover:bg-white/20 p-1 rounded-lg transition-all cursor-pointer">
+          <li className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("aboutus") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>
             <Link href="/aboutus">درباره ما</Link>
           </li>
           <li>
             {session?.user ? (
               <SignedIn session={session} />
             ) : (
-              <button onClick={() => signIn()}>وارد شوید</button>
+              <button onClick={() => signIn()} className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("aboutus") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>وارد شوید</button>
             )}
           </li>
         </ul>

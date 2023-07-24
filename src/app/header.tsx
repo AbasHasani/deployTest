@@ -40,7 +40,7 @@ const Header: FC<Props> = ({ session }) => {
             {session?.user ? (
               <SignedIn session={session} />
             ) : (
-              <button onClick={() => signIn()} className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("aboutus") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>وارد شوید</button>
+              <button onClick={() => signIn()} className={`p-1 rounded-lg transition-all cursor-pointer ${pathname.includes("auth") ? "hover:bg-secondary hover:text-primary  border border-black bg-primary" : "hover:bg-white/20"} `}>وارد شوید</button>
             )}
           </li>
         </ul>

@@ -17,19 +17,19 @@ const SideBar = () => {
       <div className="mb-1 pb-1 border-b border-info/20">
         <h1 className="mb-2">نوع ضمانت:</h1>
         <div className="grid grid-cols-2">
-          <div className="flex gap-2 p-1">
+          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
             <label htmlFor="check">چک</label>
             <input type="checkbox" name="check" id="check" />
           </div>
-          <div className="flex gap-2 p-1">
+          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
             <label htmlFor="softe">سفته</label>
             <input type="checkbox" name="softe" id="softe" />
           </div>
-          <div className="flex gap-2 p-1">
+          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
             <label htmlFor="check">ضامن</label>
             <input type="checkbox" name="zamen" id="zamen" />
           </div>
-          <div className="flex gap-2 p-1">
+          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
             <label htmlFor="check">سایر</label>
             <input type="checkbox" name="other" id="other" />
           </div>
@@ -37,11 +37,11 @@ const SideBar = () => {
       </div>
       <div className="mb-1 pb-1 border-b border-info/20">
         <div className="flex flex-col gap-3">
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[6rem]">
             <label htmlFor="wallet">کیف پول</label>
             <input type="checkbox" name="wallet" id="wallet" />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[6rem]">
             <label htmlFor="cash">کارت نقدی</label>
             <input type="checkbox" name="cash" id="cash" />
           </div>
@@ -49,11 +49,11 @@ const SideBar = () => {
       </div>
       <div className="mb-1 pb-1 border-b border-info/20">
         <div className="flex flex-col gap-3">
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[8rem]">
             <label htmlFor="verified">با اعتبار سنجی</label>
             <input type="checkbox" name="verified" id="verified" />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[8rem]">
             <label htmlFor="unverified">بدون اعبار سنجی</label>
             <input type="checkbox" name="unverified" id="unverified" />
           </div>
@@ -62,11 +62,11 @@ const SideBar = () => {
       <div>
         <h1 className="mb-2">قرارداد ها خاص</h1>
         <div className="flex flex-col gap-3">
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[5rem]">
             <label htmlFor="retired">بازنشسته</label>
             <input type="checkbox" name="retired" id="retired" />
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-2 justify-between max-w-[5rem]">
             <label htmlFor="cultural">فرهنگیان</label>
             <input type="checkbox" name="cultural" id="cultural" />
           </div>

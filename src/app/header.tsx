@@ -16,7 +16,7 @@ const Header: FC<Props> = ({ session }) => {
     <header className="w-full h-20 z-50">
       <nav className="lg:w-3/5 lg:mx-auto mx-5 flex justify-between items-center h-full">
         <Link href="/">
-          <button className="flex-1 text-lg font-bold">کجاـقسط</button>
+          <button className="flex-1 text-lg font-bold">کجا قسط</button>
         </Link>
         <ul
           className={`flex-1 flex flex-col md:right-0 md:flex-row md:bg-inherit bg-cyan-900 transition-all justify-around items-center w-1/2 h-screen md:w-auto md:h-auto fixed top-0 md:relative ${

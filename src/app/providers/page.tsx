@@ -3,7 +3,7 @@ import Options from "./options";
 import Provider from "./provider";
 import SideBar from "./siebarOptions";
 
-export const providers = [
+const providers = [
   {
     name: "لندو",
     image: "/p1.jpg",

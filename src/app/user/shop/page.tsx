@@ -2,7 +2,7 @@ import { prisma } from "@/db";
 import { getUser } from "../session";
 import { ShopForm as Form } from "./form";
 import Header from "./header";
-import { products } from "@/app/products/page";
+// import { products } from "@/app/products/page";
 import Product from "./product";
 
 const createProduct = async (

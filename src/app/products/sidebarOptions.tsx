@@ -9,7 +9,7 @@ const Sidebar = () => {
   ];
   return (
     <div className="sticky top-5 w-64 border border-info/20 rounded p-2">
-      <div className="mb-1 pb-1 border-b border-info/20">
+      <div className="mb-1 pb-1">
         <Accordion defaultValue="type">
           <Accordion.Item value="type">
             <Accordion.Control>نوع فروشگاه</Accordion.Control>
@@ -49,7 +49,7 @@ const Sidebar = () => {
             <Accordion.Control>ارائه دهنده</Accordion.Control>
             <Accordion.Panel>
               {providers.map(({ text, id }) => (
-                <div>
+                <div key={id}>
                   <Checkbox label={text} />
                   <Divider my="sm" variant="dashed" />
                 </div>

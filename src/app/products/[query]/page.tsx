@@ -47,11 +47,11 @@ interface Props {
 }
 
 const Page = async ({params:{query}}: Props) => {
-  const products = await prisma.product.findMany({where: {
-    name: {
-      contains: query
-    }
-  }});
+  // const products = await prisma.product.findMany({where: {
+  //   name: {
+  //     contains: query
+  //   }
+  // }});
   const options = [
     "پربازدیدترین",
     "ارزان ترین",

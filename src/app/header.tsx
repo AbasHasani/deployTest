@@ -125,7 +125,7 @@ export function Header({ links, session }: HeaderProps) {
   });
 
   return (
-    <MantineHeader height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={120}>
+    <MantineHeader height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={20}>
       <Container className={classes.inner} fluid>
         <Group>
           <Burger
@@ -142,9 +142,16 @@ export function Header({ links, session }: HeaderProps) {
           <Button radius="xl" h={30}>
             Get early access
           </Button>
-          <Button radius="xl" h={30} className="mr-5" onClick={() => signIn()}>
-            Sign in
-          </Button>
+          <Link href="/signin">
+            <Button
+              radius="xl"
+              h={30}
+              className="mr-5"
+              // onClick={() => signIn()}
+            >
+              Sign in
+            </Button>
+          </Link>
         </div>
       </Container>
     </MantineHeader>

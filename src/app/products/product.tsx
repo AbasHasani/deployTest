@@ -3,31 +3,30 @@ import Link from "next/link";
 import { FC } from "react";
 
 interface Props {
-  key: string;
-  id: string;
+  id: number;
   name: string;
   description: string;
   image: string | null;
-  loans: number | null;
+  // loans: number | null;
   prepayment: number | null;
-  min: number | null;
-  max: number | null;
-  createdAt: Date;
-  updatedAt: Date;
+  // min: number | null;
+  // max: number | null;
+  // createdAt: Date;
+  // updatedAt: Date;
   price: number;
-  providerId: string;
+  // providerId: string;
 }
 
-const Product: FC<Props> = ({ id, name, image, description, prepayment }) => {
+const Product: FC<Props> = ({ id, name, image, description, prepayment, price }) => {
   return (
     <Link
       href={`/product/${id}`}
-      className="flex flex-col min-h-[20rem] gap-2 justify-between border-info/50 my-3 rounded shadow p-6 overflow-hidden"
+      className="flex flex-col min-h-[20rem] gap-2 justify-between border-info/50 my-3 rounded p-6 overflow-hidden shadow-2xl"
     >
       <div>
         <div className="flex flex-col gap-2">
           <div className="relative h-[8rem] w-full">
-            <Image src={image || ""} className="rounded" fill alt="" />
+            <Image src={image || ""} className="rounded object-cover" fill alt="" />
           </div>
           <div className="">
             <p className="text-center">{name}</p>
@@ -35,7 +34,7 @@ const Product: FC<Props> = ({ id, name, image, description, prepayment }) => {
           </div>
         </div>
         <p className="text-center bg-primary/20 rounded ml-5 mt-5">
-          55,000,000
+          {price},000,000
         </p>
       </div>
       <div>

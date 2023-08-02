@@ -4,13 +4,17 @@ import { AiOutlineBell, AiOutlineFlag, AiOutlineHeart } from "react-icons/ai";
 import { FiShare2 } from "react-icons/fi";
 
 interface Props {
-  name: string;
-  description: string;
-  providerId: string;
-  price: string
+  id?: string | undefined;
+  name?: string | undefined;
+  description?: string | undefined;
+  image?: string | null | undefined;
+  loans?: number | null | undefined;
+  prepayment?: number | null | undefined;
+  providerId?: string | undefined;
+  price: number | null | undefined
 }
 
-const Heading: FC<Props> = ({name, description, providerId, price}) => {
+const Heading: FC<Props> = ({ name, description, providerId, price }) => {
   return (
     <div className="flex border p-5 rounded items-center">
       <div className="relative h-[20rem] w-[10rem] overflow-hidden rounded ml-10">

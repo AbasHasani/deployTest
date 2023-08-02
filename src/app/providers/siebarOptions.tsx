@@ -4,7 +4,7 @@ import { Checkbox, Accordion, Divider } from "@mantine/core";
 const SideBar = () => {
   return (
     <div className="sticky top-5 w-64 border border-info/20 rounded p-2">
-      <div className="mb-1 pb-1 border-b border-info/20">
+      <div className="mb-1 pb-1">
         <h3 className="mb-2 text-center">میزان اعتبار</h3>
         <div className="flex justify-center mb-1 border border-info/20 p-1 rounded">
           <p>از</p>
@@ -19,9 +19,9 @@ const SideBar = () => {
       </div>
       <Accordion
         defaultValue="type"
-        className="mb-1 pb-1 border-b border-info/20"
+        className="mb-1 pb-1"
       >
-        <Accordion.Item value="type">
+        <Accordion.Item value="gaurantee">
           <Accordion.Control>نوع ضمانت:</Accordion.Control>
           <Accordion.Panel>
             <Checkbox label="چک" />
@@ -33,7 +33,7 @@ const SideBar = () => {
             <Checkbox label="سایر" />
           </Accordion.Panel>
         </Accordion.Item>
-        <Accordion.Item value="type">
+        <Accordion.Item value="paytype">
           <Accordion.Control>نوع پرداخت</Accordion.Control>
           <Accordion.Panel>
             <Checkbox label="کیف پول" />
@@ -41,7 +41,7 @@ const SideBar = () => {
             <Checkbox label="کارت نقدی" />
           </Accordion.Panel>
         </Accordion.Item>
-        <Accordion.Item value="type">
+        <Accordion.Item value="verification">
           <Accordion.Control>اعتبار سنجی</Accordion.Control>
           <Accordion.Panel>
             <Checkbox label="با اعتبار سنجی" />
@@ -49,7 +49,7 @@ const SideBar = () => {
             <Checkbox label="بدون اعتبار سنجی" />
           </Accordion.Panel>
         </Accordion.Item>
-        <Accordion.Item value="type">
+        <Accordion.Item value="specialContracts">
           <Accordion.Control>قرارداد های خاص</Accordion.Control>
           <Accordion.Panel>
             <Checkbox label="بازنشسته" />

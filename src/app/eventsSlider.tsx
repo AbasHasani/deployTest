@@ -32,7 +32,7 @@ const Events = () => {
       <div className="relative overflow-hidden rounded-lg mx-[10rem]">
         <MdKeyboardArrowRight
           size={30}
-          className="z-50 hover:bg-secondary cursor-pointer h-16 absolute top-1/2 bg-primary border border-secondary border-r-0 rounded-lg rounded-tr-none rounded-br-none  text-secondary-foreground"
+          className="z-50 hover:bg-secondary cursor-pointer h-10 w-10 absolute top-1/2 border border-primary mr-3 rounded-full  text-secondary-foreground"
           onClick={() => slide("right")}
         />
         <div
@@ -55,7 +55,7 @@ const Events = () => {
         </div>
         <MdKeyboardArrowLeft
           size={30}
-          className="z-50 cursor-pointer hover:bg-secondary h-16 absolute top-1/2 left-0 bg-primary border border-secondary border-l-0 rounded-lg rounded-tl-none rounded-bl-none text-secondary-foreground"
+          className="z-50 cursor-pointer hover:bg-secondary h-10 w-10 ml-3 absolute top-1/2 left-0 border border-primary mr-3 rounded-full text-secondary-foreground"
           onClick={() => slide("left")}
         />
       </div>

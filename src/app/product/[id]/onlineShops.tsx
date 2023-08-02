@@ -1,6 +1,6 @@
 import { AiFillStar, AiOutlineFlag } from "react-icons/ai";
 import { MdOutlineKeyboardArrowLeft, MdLocationOn } from "react-icons/md";
-const OnlineShops = () => {
+const OnlineShops = ({loans}:any) => {
   return (
     <div className="flex flex-col gap-5 border p-5 rounded mt-3">
       <div className="flex justify-between">
@@ -24,12 +24,11 @@ const OnlineShops = () => {
           <p className="p-2">خرید حضوری 21</p>
         </div>
         <div>
-          {Array(7)
-            .fill(null)
-            .map((_, i) => (
-              <div key={i} className="grid grid-cols-3 gap-5 p-3 border-b">
+          {loans
+            .map((loan: any) => (
+              <div key={loan.id} className="grid grid-cols-3 gap-5 p-3 border-b">
                 <div className="ml-40">
-                  <p className="font-bold text-lg text-black">سلام</p>
+                  <p className="font-bold text-lg text-black">{loan.providerId}</p>
                   <p className="font-light text-sm text-gray-600">تهران</p>
                 </div>
                 <div className="flex flex-col gap-2">
@@ -61,7 +60,7 @@ const OnlineShops = () => {
                   <p className="bg-blue-600 text-white px-2 py-1 rounded">
                     آگهی
                   </p>
-                  <p className="text-red-500">38,000,000</p>
+                  <p className="text-red-500">{loan.percent}</p>
                   <p className="bg-red-500 text-white px-2 py-1 rounded">
                     خرید اینترنتی
                   </p>

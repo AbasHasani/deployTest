@@ -49,17 +49,19 @@ model TakenLoan {
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String   @db.VarChar(255)
-  description String   @db.Text
-  image       String?  @db.VarChar(255)
-  loans       Int?     @default(0)
-  prepayment  Int?     @default(0)
-  min         Int?     @default(0)
-  max         Int?     @default(0)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  price       Int
+  id            String   @id @default(uuid())
+  name          String   @db.VarChar(255)
+  description   String   @db.Text
+  image         String?  @db.VarChar(255)
+  loans         Int?     @default(0)
+  prepayment    Int?     @default(0)
+  min           Int?     @default(0)
+  max           Int?     @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  price         Int
+  providerName  String
+  providerImage String
 
   Loan       Loan[]
   TakenLoans TakenLoan[]

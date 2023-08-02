@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Categories = () => {
+const Categories = async () => {
   const categories = [
     {
       title: "موبایل",
@@ -15,6 +15,8 @@ const Categories = () => {
       items: ["کولر گازی", "کولر آبی"],
     },
   ];
+  const getu = await new Promise((res, rej) => setTimeout(() => res(""), 2000));
+  
   return (
     <div className="grid grid-cols-3 mt-5">
       {categories.map(({ title, items }) => (

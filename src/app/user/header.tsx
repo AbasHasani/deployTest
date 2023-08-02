@@ -19,9 +19,15 @@ const UserHeader: FC<{
         <div className="flex flex-col gap-3">
           <p>{name}</p>
           <p>{email}</p>
-          <Link href={"/user/buildshop"}>
-            <Button className="w-full">ساخت فروشگاه</Button>
-          </Link>
+          {hasProvider ? (
+            <Link href={`/user/shop`}>
+              <Button className="w-full">فروشگاه</Button>
+            </Link>
+          ) : (
+            <Link href={"/user/buildshop"}>
+              <Button className="w-full">ساخت فروشگاه</Button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

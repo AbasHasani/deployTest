@@ -113,14 +113,14 @@ export function Header({ links, session }: HeaderProps) {
     }
 
     return (
-      <a
+      <Link
         key={link.label}
         href={link.link}
         className={classes.link}
-        onClick={(event) => event.preventDefault()}
+        // onClick={(event) => event.preventDefault()}
       >
         {link.label}
-      </a>
+      </Link>
     );
   });
 
@@ -138,9 +138,14 @@ export function Header({ links, session }: HeaderProps) {
         <Group spacing={5} className={classes.links}>
           {items}
         </Group>
-        <Button radius="xl" h={30}>
-          Get early access
-        </Button>
+        <div>
+          <Button radius="xl" h={30}>
+            Get early access
+          </Button>
+          <Button radius="xl" h={30} className="mr-5" onClick={() => signIn()}>
+            Sign in
+          </Button>
+        </div>
       </Container>
     </MantineHeader>
   );

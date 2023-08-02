@@ -1,8 +1,11 @@
+"use client";
+import { Checkbox, Accordion, Divider } from "@mantine/core";
+
 const SideBar = () => {
   return (
     <div className="sticky top-5 w-64 border border-info/20 rounded p-2">
       <div className="mb-1 pb-1 border-b border-info/20">
-        <h1 className="mb-2">میزان اعتبار</h1>
+        <h3 className="mb-2 text-center">میزان اعتبار</h3>
         <div className="flex justify-center mb-1 border border-info/20 p-1 rounded">
           <p>از</p>
           <input type="text" className="w-16 mx-2" />
@@ -14,64 +17,47 @@ const SideBar = () => {
           <p>تومان</p>
         </div>
       </div>
-      <div className="mb-1 pb-1 border-b border-info/20">
-        <h1 className="mb-2">نوع ضمانت:</h1>
-        <div className="grid grid-cols-2">
-          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
-            <label htmlFor="check">چک</label>
-            <input type="checkbox" name="check" id="check" />
-          </div>
-          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
-            <label htmlFor="softe">سفته</label>
-            <input type="checkbox" name="softe" id="softe" />
-          </div>
-          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
-            <label htmlFor="check">ضامن</label>
-            <input type="checkbox" name="zamen" id="zamen" />
-          </div>
-          <div className="flex gap-2 p-1 justify-between max-w-[5rem]">
-            <label htmlFor="check">سایر</label>
-            <input type="checkbox" name="other" id="other" />
-          </div>
-        </div>
-      </div>
-      <div className="mb-1 pb-1 border-b border-info/20">
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-2 justify-between max-w-[6rem]">
-            <label htmlFor="wallet">کیف پول</label>
-            <input type="checkbox" name="wallet" id="wallet" />
-          </div>
-          <div className="flex gap-2 justify-between max-w-[6rem]">
-            <label htmlFor="cash">کارت نقدی</label>
-            <input type="checkbox" name="cash" id="cash" />
-          </div>
-        </div>
-      </div>
-      <div className="mb-1 pb-1 border-b border-info/20">
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-2 justify-between max-w-[8rem]">
-            <label htmlFor="verified">با اعتبار سنجی</label>
-            <input type="checkbox" name="verified" id="verified" />
-          </div>
-          <div className="flex gap-2 justify-between max-w-[8rem]">
-            <label htmlFor="unverified">بدون اعبار سنجی</label>
-            <input type="checkbox" name="unverified" id="unverified" />
-          </div>
-        </div>
-      </div>
-      <div>
-        <h1 className="mb-2">قرارداد ها خاص</h1>
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-2 justify-between max-w-[5rem]">
-            <label htmlFor="retired">بازنشسته</label>
-            <input type="checkbox" name="retired" id="retired" />
-          </div>
-          <div className="flex gap-2 justify-between max-w-[5rem]">
-            <label htmlFor="cultural">فرهنگیان</label>
-            <input type="checkbox" name="cultural" id="cultural" />
-          </div>
-        </div>
-      </div>
+      <Accordion
+        defaultValue="type"
+        className="mb-1 pb-1 border-b border-info/20"
+      >
+        <Accordion.Item value="type">
+          <Accordion.Control>نوع ضمانت:</Accordion.Control>
+          <Accordion.Panel>
+            <Checkbox label="چک" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="سفته" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="ضامن" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="سایر" />
+          </Accordion.Panel>
+        </Accordion.Item>
+        <Accordion.Item value="type">
+          <Accordion.Control>نوع پرداخت</Accordion.Control>
+          <Accordion.Panel>
+            <Checkbox label="کیف پول" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="کارت نقدی" />
+          </Accordion.Panel>
+        </Accordion.Item>
+        <Accordion.Item value="type">
+          <Accordion.Control>اعتبار سنجی</Accordion.Control>
+          <Accordion.Panel>
+            <Checkbox label="با اعتبار سنجی" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="بدون اعتبار سنجی" />
+          </Accordion.Panel>
+        </Accordion.Item>
+        <Accordion.Item value="type">
+          <Accordion.Control>قرارداد های خاص</Accordion.Control>
+          <Accordion.Panel>
+            <Checkbox label="بازنشسته" />
+            <Divider my="sm" variant="dashed" />
+            <Checkbox label="فرهنگیان" />
+          </Accordion.Panel>
+        </Accordion.Item>
+      </Accordion>
     </div>
   );
 };

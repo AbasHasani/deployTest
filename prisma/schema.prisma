@@ -72,16 +72,19 @@ model Product {
 // User stuff
 
 model Provider {
-  id         String      @id @default(cuid())
-  name       String?
-  image      String?
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
-  Loans      Loan[]      @relation("offeredLoans")
-  LoansGiven TakenLoan[] @relation("givenLoans")
-  Products   Product[]
-  User       User        @relation(fields: [userId], references: [id])
-  userId     String      @unique
+  id               String      @id @default(cuid())
+  name             String?
+  image            String?
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  highestCredit    Int
+  website          String
+  specialContracts String
+  Loans            Loan[]      @relation("offeredLoans")
+  LoansGiven       TakenLoan[] @relation("givenLoans")
+  Products         Product[]
+  User             User        @relation(fields: [userId], references: [id])
+  userId           String      @unique
 }
 
 model User {

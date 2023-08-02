@@ -22,17 +22,19 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "name must be at least 2 characters.",
   }),
-  email: z
-    .string()
-    .refine((value) => value === "" || /^\S+@\S+\.\S+$/.test(value), {
-      message: "Invalid email address",
-    })
-    .optional(),
+  highestCredit: z.string(),
+  specialContracts: z.string(),
+  website: z.string().optional(),
 });
 
 interface Props {
   session: any;
-  createShop: (name: string) => Promise<void>;
+  createShop: (
+    name: string,
+    highestCredit: string,
+    website: string,
+    specialContracts: string,
+  ) => Promise<void>;
 }
 
 export const ProfileForm: FC<Props> = ({ session, createShop }) => {
@@ -41,7 +43,8 @@ export const ProfileForm: FC<Props> = ({ session, createShop }) => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
+      highestCredit: "",
+      specialContracts: "",
     },
   });
 
@@ -49,7 +52,13 @@ export const ProfileForm: FC<Props> = ({ session, createShop }) => {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    createShop(values.name)
+    // console.log(values);
+    createShop(
+      values.name,
+      values.highestCredit,
+      values.website || "",
+      values.specialContracts,
+    );
   }
   return (
     <Form {...form}>
@@ -59,7 +68,7 @@ export const ProfileForm: FC<Props> = ({ session, createShop }) => {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="capitalize">اطلاعات فروشگاه</FormLabel>
+              <FormLabel className="capitalize">نام فروشگاه</FormLabel>
               <FormControl>
                 <Input placeholder="name" {...field} />
               </FormControl>
@@ -72,16 +81,39 @@ export const ProfileForm: FC<Props> = ({ session, createShop }) => {
         />
         <FormField
           control={form.control}
-          name="email"
+          name="highestCredit"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="capitalize">ایمیل فروشگاه</FormLabel>
+              <FormLabel className="capitalize">سقف اعتبار</FormLabel>
               <FormControl>
-                <Input placeholder="email" {...field} />
+                <Input placeholder="سقف اعتبار" {...field} />
               </FormControl>
-              <FormDescription>
-                برای فروشگاه خود نام و ایمیل انتخاب کنید
-              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="specialContracts"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="capitalize">قراردادهای خاص</FormLabel>
+              <FormControl>
+                <Input placeholder="قزارداد های خاص" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="website"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="capitalize">آدرس وبسایت</FormLabel>
+              <FormControl>
+                <Input placeholder="وبسایت" {...field} />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

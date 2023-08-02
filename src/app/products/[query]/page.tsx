@@ -1,6 +1,9 @@
 import { prisma } from "@/db";
 import Product from "../product";
 import Sidebar from "../sidebarOptions";
+import { SegmentedControl } from "@mantine/core";
+import Options from "../options";
+import { FC } from "react";
 
 const products = [
   {
@@ -27,10 +30,28 @@ const products = [
     image: "/p3.jpg",
     id: 3,
   },
+  {
+    name: "Iphone 2",
+    description: "لپتاپ دانشجویی2",
+    price: 40,
+    prepayment: 30,
+    image: "/p4.jpg",
+    id: 4,
+  },
 ];
 
-const Page = async () => {
-  // const products = await prisma.product.findMany();
+interface Props {
+  params: {
+    query: string;
+  }
+}
+
+const Page = async ({params:{query}}: Props) => {
+  const products = await prisma.product.findMany({where: {
+    name: {
+      contains: query
+    }
+  }});
   const options = [
     "پربازدیدترین",
     "ارزان ترین",
@@ -41,14 +62,12 @@ const Page = async () => {
     <div className="flex gap-2 items-start mt-5">
       <Sidebar />
       <div className="flex-1">
-        <div className="flex justify-around border border-info/20 p-3 rounded">
-          {options.map((option) => (
-            <p key={option}>{option}</p>
+        <Options options={options} />
+        <div className="grid grid-cols-fluid gap-2">
+          {products.map((product) => (
+            <Product {...product} key={product.id} />
           ))}
         </div>
-        {products.map((product) => (
-          <Product {...product} key={product.id} />
-        ))}
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ export const getUser = async (): Promise<User> => {
   const user = await prisma.user.findUnique({
     where: { email: session?.user?.email || undefined },
   });
+  console.log(session)
   if (!user) throw Error("Wrong");
   return user;
 };

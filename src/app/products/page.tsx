@@ -5,7 +5,7 @@ import Options from "./options";
 import Product from "./product";
 import Sidebar from "./sidebarOptions";
 
-export const products = [
+const products = [
   {
     name: "لپتاپ",
     description: "لپتاپ دانشجویی",

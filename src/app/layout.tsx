@@ -20,19 +20,12 @@ export default async function RootLayout({
   children: React.ReactNode;
   testy: React.ReactNode;
 }) {
-  const links = [
-    { label: "خانه", link: "/" },
-    { label: "دسته بندی", link: "categories" },
-    { label: "ارائه دهندگان", link: "providers" },
-    { label: "آموزش", link: "learning" },
-    { label: "درباره ما", link: "aboutus" },
-  ];
   const session: Session | null = await getServerSession(authOptions);
   return (
     <html lang="en" dir="rtl">
       <body className={`${vazir.className} overflow-x-hidden`}>
           <Provider>
-            <Header session={session} links={links} />
+            <Header session={session} />
             <main className="container mx-auto">{children}</main>
           </Provider>
       </body>

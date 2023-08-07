@@ -10,7 +10,7 @@ export default async function Home() {
     <div className="">
       <SearchBar />
       <Events />
-      {/* <Categories /> */}
+      <Categories />
     </div>
   );
 }

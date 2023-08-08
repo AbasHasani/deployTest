@@ -59,11 +59,11 @@ const Page = async ({params:{query}}: Props) => {
     "پیشنهاد و خریداران",
   ];
   return (
-    <div className="flex gap-2 items-start mt-5">
+    <div className="flex flex-col md:flex-row gap-2 items-start">
       <Sidebar />
       <div className="flex-1">
         <Options options={options} />
-        <div className="grid grid-cols-fluid gap-2">
+        <div className="grid grid-cols-fluid gap-2 justify-items-center">
           {products.map((product) => (
             <Product {...product} key={product.id} />
           ))}

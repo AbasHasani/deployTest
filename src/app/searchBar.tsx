@@ -26,7 +26,7 @@ const SearchBar = () => {
 
   return (
     <div className="w-full flex flex-col items-center justify-around px-2 mt-5">
-      <p className="font-extrabold text-3xl mb-10">سایتی برای پیدا کردن وام های مردمی</p>
+      <p className="font-extrabold text-xl md:text-3xl mb-10 text-center">سایتی برای پیدا کردن وام های مردمی</p>
       <p className="font-bold text-xl mb-5">
         <span className="border-b border-gray-300">محصول</span> خود را جستجو
         کنید
@@ -39,10 +39,7 @@ const SearchBar = () => {
         <div className="w-full h-full relative bg-inherit">
           <input
             type="text"
-            className="w-full h-full bg-inherit outline-none text-info"
-            style={{
-              direction: "rtl",
-            }}
+            className="w-full h-full bg-inherit outline-none text-info text-sm md:text-base"
             placeholder="اسم محصول را اینجا تایب کنید..."
             value={productValue}
             onChange={(e) => {

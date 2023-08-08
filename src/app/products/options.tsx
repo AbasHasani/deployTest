@@ -12,7 +12,7 @@ const Options: FC<Props> = ({ options }) => {
       fullWidth
       size="sm"
       data={options.map((option) => ({ value: option, label: option }))}
-      className="m-3 shadow-lg"
+      className="md:m-3 shadow-lg"
     />
   );
 };

@@ -8,7 +8,7 @@ const Sidebar = () => {
     { text: "بانک آینده", id: "furuteBank" },
   ];
   return (
-    <div className="sticky top-5 w-64 border border-info/20 rounded p-2">
+    <div className="md:sticky top-5 w-full md:w-64 border border-info/20 rounded p-2 flex justify-center">
       <div className="mb-1 pb-1">
         <Accordion defaultValue="type">
           <Accordion.Item value="type">

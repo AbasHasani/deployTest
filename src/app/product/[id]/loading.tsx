@@ -1,21 +1,7 @@
-import { prisma } from "@/db";
-import Heading from "./heading";
-import OnlineShops from "./onlineShops";
-
-interface Props {
-  params: {
-    id: string;
-  }
-}
-
-const Page = async ({params:{id}}:Props) => {
-  const product = await prisma.product.findUnique({where: {id}});
-  const loans = await prisma.loan.findMany({where: {productId: id}})
+const Page = async () => {
   return (
     <div>
-      {/* @ts-ignore */}
-      <Heading {...product} />
-      <OnlineShops loans={loans} />
+      <h1>Loading...</h1>
     </div>
   );
 };

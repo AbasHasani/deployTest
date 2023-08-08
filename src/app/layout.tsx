@@ -2,9 +2,9 @@ import "./globals.css";
 import { Montserrat, Vazirmatn } from "next/font/google";
 import Provider from "@/comps/provider";
 import Header from "@/app/header";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
-import { Session } from "next-auth";
+// import { getServerSession } from "next-auth/next";
+// import { authOptions } from "./api/auth/[...nextauth]/route";
+// import { Session } from "next-auth";
 
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ["400"] });
@@ -20,19 +20,11 @@ export default async function RootLayout({
   children: React.ReactNode;
   testy: React.ReactNode;
 }) {
-  const links = [
-    { label: "خانه", link: "/" },
-    { label: "دسته بندی", link: "categories" },
-    { label: "ارائه دهندگان", link: "providers" },
-    { label: "آموزش", link: "learning" },
-    { label: "درباره ما", link: "aboutus" },
-  ];
-  const session: Session | null = await getServerSession(authOptions);
   return (
     <html lang="en" dir="rtl">
       <body className={`${vazir.className} overflow-x-hidden`}>
           <Provider>
-            <Header session={session} links={links} />
+            <Header />
             <main className="container mx-auto">{children}</main>
           </Provider>
       </body>

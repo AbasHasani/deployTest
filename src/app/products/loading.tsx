@@ -9,7 +9,7 @@ const Loading = async () => {
     "پیشنهاد و خریداران",
   ];
   return (
-    <div className="flex gap-2 items-start">
+    <div className="flex flex-col md:flex-row gap-2 items-start">
       <Skeleton className="bg-gray-500 h-[25rem] w-[10rem] ml-5" />
       <div className="flex-1">
         <div className="flex gap-3 mb-5 justify-around">

@@ -4,6 +4,7 @@ import Sidebar from "../sidebarOptions";
 import { SegmentedControl } from "@mantine/core";
 import Options from "../options";
 import { FC } from "react";
+import Products from "../products";
 
 const products = [
   {
@@ -52,22 +53,11 @@ const Page = async ({params:{query}}: Props) => {
   //     contains: query
   //   }
   // }});
-  const options = [
-    "پربازدیدترین",
-    "ارزان ترین",
-    "گران ترین",
-    "پیشنهاد و خریداران",
-  ];
   return (
     <div className="flex flex-col md:flex-row gap-2 items-start">
       <Sidebar />
       <div className="flex-1">
-        <Options options={options} />
-        <div className="grid grid-cols-fluid gap-2 justify-items-center">
-          {products.map((product) => (
-            <Product {...product} key={product.id} />
-          ))}
-        </div>
+      <Products products={products} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { prisma } from "@/db";
 import Options from "./options";
 import Product from "./product";
 import Sidebar from "./sidebarOptions";
+import Products from "./products";
 
 const products = [
   {
@@ -31,7 +32,7 @@ const products = [
     id: 3,
   },
   {
-    name: "2لپتاپ",
+    name: "3لپتاپ",
     description: "لپتاپ دانشجویی2",
     price: 100,
     prepayment: 32,
@@ -39,7 +40,7 @@ const products = [
     id: 4,
   },
   {
-    name: "2لپتاپ",
+    name: "4لپتاپ",
     description: "لپتاپ دانشجویی2",
     price: 40,
     prepayment: 25,
@@ -47,7 +48,7 @@ const products = [
     id: 5,
   },
   {
-    name: "2لپتاپ",
+    name: "5لپتاپ",
     description: "لپتاپ دانشجویی2",
     price: 47,
     prepayment: 13,
@@ -55,7 +56,7 @@ const products = [
     id: 6,
   },
   {
-    name: "2لپتاپ",
+    name: "6لپتاپ",
     description: "لپتاپ دانشجویی2",
     price: 10,
     prepayment: 30,
@@ -64,26 +65,13 @@ const products = [
   },
 ];
 
-const Page = async () => {
+const Page = async ({searchParams}:any) => {
   // const products = await prisma.product.findMany();
-  const options = [
-    "پربازدیدترین",
-    "ارزان ترین",
-    "گران ترین",
-    "پیشنهاد و خریداران",
-  ];
   const getu = await new Promise((res, rej) => setTimeout(() => res(""), 2000));
   return (
     <div className="flex flex-col md:flex-row gap-2 items-start">
       <Sidebar />
-      <div className="flex-1">
-        <Options options={options} />
-        <div className="grid grid-cols-fluid gap-2 justify-items-center">
-          {products.map((product) => (
-            <Product {...product} key={product.id.toString()} />
-          ))}
-        </div>
-      </div>
+      <Products products={products} />
     </div>
   );
 };

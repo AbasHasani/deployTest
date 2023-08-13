@@ -2,10 +2,17 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { FC, useState } from "react";
-import { AiOutlineMenu, AiOutlineCar, AiOutlineMobile } from "react-icons/ai";
+import {
+  AiOutlineMenu,
+  AiOutlineCar,
+  AiOutlineMobile,
+  AiFillApple,
+} from "react-icons/ai";
 import { BiHome, BiGame } from "react-icons/bi";
+import { BsXbox } from "react-icons/bs";
 import { FiChevronDown } from "react-icons/fi";
 import { GiNestedHexagons } from "react-icons/gi";
+import { MdOutlineAir } from "react-icons/md";
 import SignedIn from "./signedIn";
 import { Session } from "next-auth";
 import { usePathname } from "next/navigation";
@@ -117,15 +124,15 @@ const useStyles = createStyles((theme) => ({
 
 const mockdata = [
   {
-    icon: AiOutlineMobile,
+    icon: /*AiOutlineMobile*/ AiFillApple,
     title: "موبایل",
   },
   {
-    icon: BiGame,
+    icon: /*BiGame*/ BsXbox,
     title: "کنسول بازی",
   },
   {
-    icon: BiHome,
+    icon: /*BiHome*/ MdOutlineAir,
     title: "خانه",
   },
   {
@@ -141,6 +148,7 @@ export function Header() {
   const { classes, theme } = useStyles();
 
   const links = mockdata.map((item) => (
+    <Link href={`/products?category=${item.title}`}>
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group noWrap align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
@@ -153,6 +161,7 @@ export function Header() {
         </div>
       </Group>
     </UnstyledButton>
+    </Link>
   ));
 
   return (
